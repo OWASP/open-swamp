@@ -1,0 +1,204 @@
+/*
+ * main layout styles
+ */
+
+#main {
+	.container {
+		color: @darkGrey;
+		background-color: white;
+	}
+}
+
+.span9 .content {
+	padding-left: 10px;
+}
+
+.span12 {
+	padding-right: 20px;
+}
+
+.variable-columns .well {
+	margin-left: 0;
+	margin-right: 10px;
+}
+
+/*
+ * content styles
+ */
+
+.content {
+	padding: 25px;
+	margin-top: 25px;
+}
+
+/*
+ * one column styles
+ */
+
+.one-column .content {
+	margin-top: 70px
+}
+
+/*
+ * two column styles
+ */
+
+.two-column .row-fluid {
+	position: relative;
+}
+
+/*
+ * left side column styles
+ */
+
+.left.side-column {
+	padding-left: 10px;
+}
+
+.left.side-column.large {
+	padding-left: 20px;
+}
+
+.right.main-column {
+	.content {
+		padding-left: 0;
+		padding-top: 25px;
+	}
+}
+
+/*
+ * right side column styles
+ */
+
+.left.main-column {
+	.content {
+		padding-right: 0;
+		padding-top: 25px;
+	}
+}
+
+.right.side-column {
+	padding-right: 10px;
+	margin-left: 880px;
+}
+
+.right.side-column.large {
+	padding-right: 20px;
+	margin-left: 810px;
+}
+
+/*
+ * header and footer styles
+ */
+
+#footer .container {
+	color: black;
+	border-top: 5px solid @primaryColor;
+	padding-top: 15px;
+	padding-bottom: 25px;
+}
+
+#footer .logo {
+	float: right;
+}
+
+/*
+ * other layout styles
+ */
+
+hr {
+	border: 0;
+	width: 100%;
+	background-color: @primaryColor;
+	height: 2px;
+}
+
+.spacing {
+	display: inline-block;
+	width: 25px
+}
+
+.well {
+	background-color: @veryVeryLightGrey;
+	border-radius: 10px;
+	padding: 10px;
+	border: none;
+
+	h3 {
+		margin-top: 0;
+	}
+}
+
+.active.well:active {
+	background-color: @ultraLightGrey;
+}
+
+.well.selected, .well.selected:hover {
+	.vertical-gradient(@primaryHighlightColor, @primaryColor);
+	color: white;
+	h3 {
+		color: white;
+	}
+}
+
+/*
+ * dashboard styles
+ */
+
+.dashboard {
+	.span4 {
+		display: block;
+		min-height: 150px;
+		margin-left: 0;
+	}
+
+	.badge {
+		margin-left: 75px;
+	}
+}
+
+.content h1 div, .dashboard h2 div {
+	float: left;
+	margin-top: 5px;
+	margin-left: 20px;
+	margin-right: 20px;
+	width: 90px;
+	height: 90px;
+	border-radius: 10px;
+	.vertical-gradient(white, @veryLightGrey);
+	border: 4px solid @primaryColor;
+	text-align: center;
+
+	i {
+		margin-left: 1px;
+		margin-top: 15px;
+		width: 100%;
+		font-size: 60px;
+		color: @veryDarkGrey;
+	}
+}
+
+/*
+ * figure / illustration styles
+ */
+
+.figure.left {
+	float: left;
+	margin-right: 25px;
+	margin-bottom: 25px;
+}
+
+.figure.right {
+	float: right;
+	margin-left: 25px;
+	margin-bottom: 25px;
+}
+
+/*
+ * filter styles
+ */
+
+.filters .btn-group {
+	margin-right: 75px
+}
+

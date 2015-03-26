@@ -1,0 +1,197 @@
+#!/usr/bin/env perl
+
+use 5.010;
+use utf8;
+use warnings;
+use strict;
+
+use sigtrap 'handler', \&trap_handler, 'normal-signals';
+
+use Getopt::Long qw/GetOptions/;
+use Pod::Usage qw/pod2usage/;
+use English qw(-no_match_vars);
+use Cwd 'abs_path';
+use Carp 'croak';
+
+use VMTools qw(
+checkEffectiveUser consoleMsg errorMsg extractOutput init logMsg pkgshutdown 
+startVM
+defineVM
+listMasters
+listVMs
+initProjectLog
+createImages
+createXML
+setvmprojectdir
+vmVNCDisplay
+vmExists
+vmState);
+
+use VMConstants;
+
+our $VERSION = '1.04';
+my $help       = 0;
+my $man        = 0;
+my $dolist     = 0;
+my $doversion  = 0;
+my $dolistmine = 0;
+my $skipManifest = 0;
+my $outsize    = VMConstants->DEFAULT_OUTSIZE_MB;
+my $nCPU       = VMConstants->DEFAULT_NCPU;
+my $imagename;
+my $memMB      = VMConstants->DEFAULT_RAM_MB;
+my $MAXOUT     = VMConstants->MAX_OUTSIZE_MB;
+my $vmname;
+my $vmfolder;
+GetOptions(
+    'vmfolder=s' => \$vmfolder,
+    'list'      => \$dolist,
+    'N|name=s'  => \$vmname,
+    'mine=s'    => \$dolistmine,
+    'skip'      => \$skipManifest,
+    'i=s'       => \$imagename,
+    'V|version' => \$doversion,
+    'help|?'    => \$help,
+    'man'         => \$man) or pod2usage(2);
+
+if ($help) { pod2usage(1); }
+if ($man) { pod2usage( '-verbose' => 2 ); }
+
+if ($doversion) {
+    print "$PROGRAM_NAME : $VERSION\n";
+    print " VMTools : $VMTools::VERSION\n";
+    exit 0;
+}
+setvmprojectdir($vmfolder);
+
+if ( !defined $vmname ) { pod2usage('vm-name option is required.'); }
+if ( !defined $imagename ) { pod2usage('existing-vm-image-name option is required.'); }
+
+$imagename = abs_path($imagename);
+if (! -r "$imagename" )  {
+    croak "Existing master image: $imagename cannot be read";
+}
+
+if ( !checkEffectiveUser() ) {
+    print {*STDERR} "You should run this script as root. Ex: sudo $PROGRAM_NAME\n";
+    exit 1;
+}
+
+if ($dolist) {
+    my @list = listMasters();
+    print "@list\n";
+    exit 0;
+}
+if ($dolistmine) {
+    my @list = listVMs();
+    print "@list\n";
+    exit 0;
+}
+
+init( $vmname, "$PROGRAM_NAME", 0 );
+logMsg("$PROGRAM_NAME started");
+
+if ( !vmExists($vmname) ) {
+    createImages( undef, $vmname, $imagename, $outsize, ($skipManifest ? 2 : 1 ));
+    createXML( 'vmname' => $vmname, 'nCPU' => $nCPU, 'memMB' => $memMB, 'imagename' => $imagename, 'isMaster' => 1 );
+    defineVM($vmname);
+}
+else {
+    errorMsg("A VM of this name ($vmname) already exists.");
+    exit 1;
+}
+
+initProjectLog($vmname);
+
+my $ret = ( startVM($vmname) );
+if ( $ret == 0 ) {
+    consoleMsg("Started master $imagename VM named $vmname.");
+    vmVNCDisplay($vmname);
+}
+else {
+# clean up project folder? Eventually, but for now leave it for troubleshooting.
+    consoleMsg("Unable to start $vmname.");
+}
+pkgshutdown();
+exit $ret;
+
+sub trap_handler {
+
+    # still need to clean up partially created VMs
+    pkgshutdown();
+    croak "Caught signal @_, shutting down";
+}
+__END__
+
+################ Documentation ################
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+masterify_vm - create and start a named VM from a master image.
+
+=head1 SYNOPSIS
+
+masterify_vm [--version] [--mine] [--skip] -N vm-name -i existing-vm-image-name 
+
+=head1 DESCRIPTION
+
+Use the command masterify_vm to start a named VM from a masterfile (existing-vm-image-name). Because this command creates temporary files for /mnt/in and /mnt/out,
+you should invoke vm_cleanup vm-name when you have finished with the VM to undefine the VM and remove temporary files.
+
+=head1 OPTIONS
+
+=over 4
+
+=item --version
+
+Display script version and exit.
+
+=item --mine
+
+List VMs created by the invoking user.
+
+=item --skip
+
+Skip creation of manifest files, C</etc/vm-master-name> and C</etc/vm-master-mode>. Also bypasses guestfish interaction with master image.
+
+=item -N I<vm-name>
+
+The name to give to the VM.
+
+=item -i I<existing-vm-image-name>
+
+The full path to the qcow2 image that is to be launched on the hypervisor. 
+
+=back 
+
+=head1 DIAGNOSTICS
+
+=over 4
+
+=item You should run this script as root.
+
+The script needs to be invoked as the root user to access the virtualization library.
+
+=item A VM of this name (%s) already exists.
+
+There is already a virtual machine named vm-name in the system. Choose a different name.
+
+=back
+
+=head1 EXIT STATUS
+
+0 if the script succeeds, non-zero otherwise.
+
+=head1 EXAMPLES
+
+$ masterify_vm -N mytest /var/lib/libvirt/images/condor-rhel-6.4-64-master-2013060401.qcow2
+
+=head1 SEE ALSO
+
+L<vm_output|vm_output>, L<vm_cleanup|vm_cleanup>, L<virsh|virsh(1)>
+
+=cut

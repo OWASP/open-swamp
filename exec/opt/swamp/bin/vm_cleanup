@@ -1,0 +1,144 @@
+#!/usr/bin/env perl
+
+use 5.010;
+use utf8;
+use warnings;
+use strict;
+use FindBin;
+use lib "$FindBin::Bin/../perl5";
+
+use Getopt::Long qw/GetOptions/;
+use Pod::Usage qw/pod2usage/;
+
+#use XML::Simple;
+use English '-no_match_vars';
+
+use VMTools qw(checkEffectiveUser consoleMsg errorMsg extractOutput init logMsg
+pkgshutdown setvmprojectdir setvmimagedir vmExists vmState removeVM destroyVM);
+
+our $VERSION = '0.96';
+my $help         = 0;
+my $man          = 0;
+my $doversion    = 0;
+my $forceDestroy = 0;
+my $vmfolder;
+my $vmimagefolder;
+GetOptions(
+    'vmfolder=s' => \$vmfolder,
+    'vmimagefolder=s' => \$vmimagefolder,
+    'force'      => \$forceDestroy,
+    'V|version'  => \$doversion,
+    'help|?'     => \$help,
+    'man'        => \$man,
+) or pod2usage(2);
+
+if ($doversion) {
+    print "vm_cleanup : $VERSION\n";
+    print "   VMTools : $VMTools::VERSION\n";
+    exit 0;
+}
+
+setvmprojectdir($vmfolder);
+setvmimagedir($vmimagefolder);
+
+my $vmname = shift || q{};
+
+if ($help) { pod2usage(1); }
+if ($man) { pod2usage( '-verbose' => 2 ); }
+if ($vmname eq q{}) { pod2usage('vm-name option is required.'); }
+
+init( $vmname, 'vm_cleanup', 1 );
+logMsg("$PROGRAM_NAME start");
+
+if ( !checkEffectiveUser() ) {
+    print {*STDERR}
+      "You should run this script as root. Ex: sudo $PROGRAM_NAME\n";
+    exit 1;
+}
+
+if ( vmExists($vmname) ) {
+    my $state = vmState($vmname);
+    if ( !$forceDestroy && $state eq 'running' ) {
+        errorMsg( "VM $vmname cannot be cleaned up at this time, it is still running.");
+    }
+    else {
+        if ( $state eq 'running' && $forceDestroy ) {
+            destroyVM($vmname);
+        }
+        if ( !removeVM($vmname) ) {
+            consoleMsg("VM $vmname has been removed from the system.");
+        }
+    }
+}
+else {
+    errorMsg("Cannot find a VM named $vmname");
+}
+pkgshutdown();
+
+__END__
+
+################ Documentation ################
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+vm_cleanup - Remove VM disk space and definition.
+
+=head1 SYNOPSIS
+
+vm_cleanup [--version] [--force] vm-name 
+
+=head1 DESCRIPTION
+
+Use the command vm_cleanup to remove the definition of an instantiated VM and any associated disk files.
+
+=head1 OPTIONS
+
+=over 4
+
+=item --version
+
+Display script version and exit.
+
+=item --force
+
+Force VM to be shutdown via destroy (this is not graceful) before clean up.
+
+=item I<vm-name>
+
+The name of the VM which will be undefined and purged. The VM must be shutdown.
+
+=back
+
+=head1 DIAGNOSTICS
+
+=over 4
+
+=item You should run this script as root.
+
+The script needs to be invoked as the root user to access the virtualization library.
+
+=item VM %s cannot be cleaned up at this time, it is still running.
+
+The virtual machine that has been requested to be cleaned up is still running and cannot be reaped. 
+Either wait until it shuts down or shut it down and try again.
+
+=item Cannot find a VM named %s
+
+The virtual machine name provided is not the name of a virtual machine registered on the hypervisor. 
+Check the list of all known machines with 'sudo virsh list --all'
+
+=back
+
+=head1 EXAMPLES
+
+$ vm_cleanup redhat6 
+
+=head1 SEE ALSO
+
+L<start_vm|start_vm>, L<vm_output|vm_output>, L<virsh|virsh(1)>
+
+=cut

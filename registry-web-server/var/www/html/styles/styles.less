@@ -1,0 +1,261 @@
+/*
+ * imports
+ */
+
+@import "colors.less";
+@import "fonts.less";
+@import "layout.less";
+@import "navs.less";
+@import "badges.less";
+@import "topbar.less";
+@import "sidebar.less";
+@import "tabs.less";
+@import "tags.less";
+@import "pills.less";
+@import "alerts.less";
+@import "buttons.less";
+@import "forms.less";
+@import "validation.less";
+@import "fieldsets.less";
+@import "tables.less";
+@import "lists.less";
+@import "modals.less";
+@import "tree-views.less";
+@import "tooltips.less";
+@import "popovers.less";
+@import "accordions.less";
+@import "front-page.less";
+@import "events.less";
+@import "results.less";
+@import "jquery/jquery.tablesorter.less";
+@import "jquery/jquery.validate.password.css";
+@import "jquery/datepicker.css";
+@import "select2/select2.css";
+@import "backbone.xray-goggles.less";
+@import "progressbar.less";
+@import "viewer-loadscreen.less";
+@import "flags.less";
+
+/*
+ * bootstrap imports
+ */
+
+@import "bootstrap/plugins/bootstrap-select/bootstrap-select.css"; 
+@import "bootstrap/plugins/bootstrap-combobox/bootstrap-combobox.css"; 
+@import "bootstrap/plugins/bootstrap-timepicker/bootstrap-timepicker.css"; 
+
+/*
+ * main colors
+ */
+
+@primaryColor: @mediumGold;
+@primaryHighlightColor: @lightGold;
+@primaryHoverColor: @darkGold;
+
+@secondaryColor: @darkGold;
+@secondaryHighlightColor: @mediumGold;
+
+@primaryBackgroundColor: @paleLightGold;
+@primaryBorderColor: @mediumGold;
+
+/*
+ * main styles
+ */
+
+body {
+	background-color: @veryVeryLightGrey;
+	margin: 0;
+}
+
+body, input, button, textarea, p {
+	font-family: "Gill Sans MT", "Gill Sans", Calibri, sans-serif;
+	/* font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif; */
+	/* font-family: "Verdana, sans-serif"; */
+	/* font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif; */
+	/* font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif; */
+	/* font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif; */
+	/* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
+	/* font-family: Futura, "Trebuchet MS", Arial, sans-serif; */
+	/* font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif; */
+}
+
+/*
+ * header styles
+ */
+
+h1, h2, h3, .brand, label, .nav, .navbar, .btn, th, legend {
+	font-family: 'TradeGothicBold', sans-serif;
+	font-weight: normal;
+}
+
+h1, h2, h3, .brand, label, .nav, .navbar, th, legend, .tagline {
+	font-weight: normal;
+	line-height: 1.5em;
+}
+
+h1 {
+	color: @veryDarkGrey;
+	font-size: 250%;
+	padding-bottom: 10px;
+	border-bottom: 2px solid @primaryColor;
+	margin-bottom: 20px;
+
+	i {
+		color: @primaryColor;
+		float: left;
+		margin-top: 5px;
+		margin-right: 15px;
+	}
+}
+
+/*
+.right .content h1 div {
+	float: right;
+}
+*/
+
+h2 {
+	margin-top: 20px;
+	color: @secondaryColor;
+
+	i {
+		color: @darkGrey;
+		float: left;
+		margin-top: 3px;
+		margin-right: 6px;
+	}
+}
+
+h3, .tagline {
+	color: @secondaryColor;
+}
+
+h2, .tagline {
+	font-size: 125%;
+}
+
+.tagline {
+	font-style: italic;
+}
+
+.help h2 {
+	color: @veryDarkGrey;
+}
+
+h3 {
+	font-size: 100%;
+}
+
+label {
+	color: @secondaryColor;
+	margin-bottom: 0;
+	padding: 0;
+
+	i {
+		margin-right: 5px;
+	}
+}
+
+.select2-results li.select2-result-with-children > .select2-result-label {
+	font-family: 'TradeGothicBold', sans-serif;
+	color: @secondaryColor;
+}
+
+/*
+ * paragraph styles
+ */
+
+.content p {
+	margin-bottom: 20px;
+}
+
+.nav p {
+	margin-bottom: 0;
+}
+
+/*
+ * highlighting styles
+ */
+
+.active {
+	cursor: pointer;
+}
+
+.warning, .warning a {
+	color: @mediumRed;
+}
+
+h1 .name {
+	color: @secondaryColor;
+}
+
+/*
+ * image styles
+ */
+
+.photo {
+	padding: 2px;
+	box-shadow: 10px 10px 20px @mediumGrey;
+}
+
+/*
+ * other text styles
+ */
+
+a .photo {
+	border: 1px solid @primaryColor;
+}
+
+.fineprint {
+	font-size: small;
+}
+
+.label {
+	color: black;
+	background-color: transparent;
+	text-shadow: none;
+}
+
+.version.label {
+	white-space: normal;
+}
+
+a:hover .version.label {
+	text-decoration: underline;
+}
+
+code {
+	background-color: @primaryBackgroundColor;
+	border: 1px solid @primaryBorderColor;
+	border-radius: 10px;
+}
+
+p {
+	color: @darkGrey;
+	font-weight: normal;
+}
+
+.badge {
+	font-family: "Gill Sans MT", "Gill Sans", Calibri, sans-serif;
+	font-weight: bold;
+}
+
+.highlighted {
+	color: @darkGold;
+	background-color: @paleLightGold;
+	border: 1px solid @mediumGold;
+	padding-left: 2px;
+	padding-right: 2px;
+	border-radius: 5px;
+}
+
+/*
+.highlighted {
+	color: @darkRed;
+	background-color: @veryLightRed;
+	border: 1px solid @lightRed;
+	padding-left: 2px;
+	padding-right: 2px;
+	border-radius: 5px;
+}
+*/

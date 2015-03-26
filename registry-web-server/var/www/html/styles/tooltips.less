@@ -1,0 +1,37 @@
+/*
+ * tooltips
+ */
+
+span[data-toggle='tooltip'] {
+	display: inline;
+	border-bottom: 1px dotted;
+}
+
+.tooltip-inner {
+	background: @primaryColor;
+}
+
+.tooltip.in {
+	opacity: 1;
+}
+
+.tooltip.left {
+	margin-left: -15px;
+}
+
+.tooltip {
+	font-size: 100%;
+
+	&.top .tooltip-arrow {
+		border-top-color: @primaryColor;
+	}
+	&.right .tooltip-arrow {
+		border-right-color: @primaryColor;
+	}
+	&.left .tooltip-arrow {
+		border-left-color: @primaryColor;
+	}
+	&.bottom .tooltip-arrow {
+		border-bottom-color: @primaryColor;
+	}
+}

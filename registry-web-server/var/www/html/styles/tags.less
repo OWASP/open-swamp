@@ -1,0 +1,28 @@
+/*
+ * tag styles
+ */
+
+.tag {
+	margin-right: 5px;
+	white-space: nowrap;
+	border-radius: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	.vertical-gradient(white, @veryLightGrey);
+	border: 1px solid @veryLightGrey;
+}
+
+.tag.primary {
+	color: white;
+	.vertical-gradient(@primaryHighlightColor, @primaryColor);
+	border: 1px solid @primaryBorderColor;
+}
+	
+.tag:hover {
+	color: @primaryColor;
+}
+
+.tag.primary:hover {
+	color: white;
+	.vertical-gradient(@primaryHoverColor, @primaryColor);
+}

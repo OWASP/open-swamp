@@ -1,0 +1,403 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"swam",
+				"swampLogin"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/dialogs/reset-password-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/models/admin-invitation.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/dialogs/reset-password.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/styles/styles.less",
+		"/Users/amegahed/Sites/swamp-prototype4/styles/colors.less",
+		"/Users/amegahed/Sites/swamp-prototype4/styles/forms.less",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/my-account/my-account-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/collections/project-memberships.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/project-membership-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/sidebar-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/models/project.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/collections/projects.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/models/project-membership.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/review/review-accounts-list-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/user-account/user-account-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/review/review-accounts-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/settings/restricted-domains/restricted-domains-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/review/review-projects-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/project-members-list-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/invitations/please-register-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/details/project-details-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/settings/system-admins/invitations/new-admin-invitations-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/settings/system-admins/system-admins-list-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/settings/system-admins/invitations/admin-invitations-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/review/review-projects-list-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/settings/restricted-domains/restricted-domains-list-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/router.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/details/edit-project-details-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/project-profile-form-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/project-profile-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/invitations/invite-project-members-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/invitations/project-invitations-list-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/invitations/project-invitations-sent-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/project-members-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/settings/system-admins/invitations/invite-admins-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/projects/info/members/invitations/project-invitations-sent.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/invitations/project-invitations-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/projects/registration/project-submitted.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/registration/project-submitted-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/registration/project-registration-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/projects/registration/project-registration.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/info/contact-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/info/message-sent.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/my-account/edit/change-password/change-my-password-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/user-account/edit/change-password/user-password-changed-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/users/user-account/edit/change-password/user-password-changed.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/user-account/edit/change-password/change-user-password-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/my-account/edit/change-password/my-password-changed-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/my-account/edit/edit-my-account-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/user-account/edit/edit-user-account-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/user-account/edit/user-account-updated-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/users/user-account/edit/user-account-updated.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/project-membership-updated-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/my-account/edit/my-account-updated-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/users/my-account/edit/my-account-updated.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/details/project-profile-updated-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/projects/info/details/project-profile-updated.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/details/project-deleted-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/projects/info/details/project-deleted.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/projects/info/details/delete-project.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/details/delete-project-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/project-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/dialogs/confirm-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/user-account/delete/delete-user-account-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/user-account/delete/user-account-deleted-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/application.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/models/timestamped.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/users/user-profile/user-profile.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/user-profile/user-profile-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/settings/system-admins/invitations/admin-invitations.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/projects/info/project-profile.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/projects/info/members/invitations/project-invitations.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/activities/activity.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/models/activity.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/collections/users.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/collections/restricted-domains.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/collections/project-invitations.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/collections/admin-invitations.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/collections/activities.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/models/user.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/invitations/confirm-invitation-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/dialogs/notify-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/dialogs/error-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/dialogs/user-validation-error-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/dialogs/confirm.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/settings/system-admins/invitations/confirm-admin-invitation-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/dialogs/error.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/dialogs/notify.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/projects/info/members/invitations/invitation-declined.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/projects/info/members/invitations/invitation-accepted.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/invitations/invitation-accepted-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/invitations/new-invitations-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/invitations/invitations-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/dialogs/user-validation-error.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/projects/project.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/project/swamp.sublime-workspace",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/settings/system-admins/invitations/admin-invitation-declined.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/settings/system-admins/invitations/admin-invitation-accepted-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/settings/system-admins/invitations/admin-invitation-accepted.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/settings/system-admins/system-admins-list.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/users/review/review-accounts-list.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/users/my-account/my-account.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/projects/review/review-projects-list.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/settings/system-admins/invitations/admin-invitation-declined-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/invitations/invitation-declined-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/settings/system-admins/invitations/invalid-admin-invitation.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/settings/system-admins/invitations/invalid-admin-invitation-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/settings/system-admins/invitations/confirm-admin-invitation.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/models/project-invitation.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/settings/system-admins/system-admins-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/models/session.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/users/registration/user-registration-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/projects/info/members/invitations/invitations.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/settings/settings.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/settings/system-admins/invitations/invite-admins.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/invitations/invite-members-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/settings/system-admins/system-admins.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/invitations/invitations-sent-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/members/invitations/invalid-invitation-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/invitations/invitations-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/settings/settings-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/settings/restricted-domains/restricted-domains.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/models/restricted-domain.js",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/projects/info/members/project-membership.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/templates/projects/project-list.tpl",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/dialogs/notification-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/projects/info/invitations/invite-members-view.js",
+		"/Users/amegahed/Sites/swamp-prototype4/scripts/views/welcome-view.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/amegahed/Sites/swamp-prototype4/",
+			"/Users/amegahed/Sites/swamp-prototype4/scripts",
+			"/Users/amegahed/Sites/swamp-prototype4/templates",
+			"",
+			"/Users/amegahed/Sites/swamp-prototype3/styles",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"users/email/user",
+			".ajax",
+			"ajax",
+			"Delete Account",
+			"new NotifyView",
+			"new NotificationView",
+			"new ConfirmView",
+			"ConfirmView",
+			"Data Retention",
+			"ProjectMembersView",
+			"membership-updated",
+			"membership",
+			"MembershipUpdated",
+			"Sent",
+			"Sub",
+			"MessageSent",
+			"updated",
+			"Updated",
+			"updated",
+			"Updated",
+			"updated",
+			"delete-project-view",
+			"Deleted",
+			"created_at",
+			"deleted_at",
+			"updated_at",
+			"created_at",
+			"btn",
+			"InviteMembersView",
+			"InvitationsSent",
+			"invitation-declined",
+			"confirm:",
+			"NotificationView",
+			"notification-view",
+			"#home",
+			"ConfirmView",
+			"project-profile/invitations",
+			"invite-members-view",
+			"project-profile/invitations/invite-members-view",
+			"Registry.url + \"/users\"",
+			"confirm_url",
+			"confirm",
+			"confirmUrl",
+			"confirmURL",
+			"confirmUrl",
+			"projects/\" +",
+			"projects/",
+			"confirm_url",
+			".ajax(",
+			"users/validate",
+			"InviteAdminsView",
+			"ates/settings/system-admins/invitations/new-invitations",
+			"system-admims",
+			"scripts/collections/admin-invitations",
+			"scripts/collections/admin-invitations.js\nscripts/collections/admin-invitations\n",
+			"scripts/models/admin-invitation",
+			"/scripts/models/admin-invitation",
+			"4/scripts/collections/admin-invitations.js\n4/scripts/collections/admin-invitations.js\ncollections/admin-invitations",
+			"project-profile/invitations",
+			"/invitations",
+			"',\n",
+			"collection",
+			"new ProjectMembershipView(",
+			"new ProjectMemberShipView(",
+			"individually",
+			"favicon",
+			"new User(",
+			"get",
+			"format",
+			"POST",
+			"projectType",
+			"projectTypes",
+			"project_type",
+			"new Project(",
+			"new Project",
+			"new ProjectMembersView",
+			"new ProjectMembershipView",
+			"get(\"admin_flag\")",
+			"xhr",
+			"pending",
+			"users/valid",
+			"event handling methods",
+			"button href",
+			"/valid",
+			"ConfirmView",
+			"ajax",
+			"projectId",
+			"$(",
+			"newUser =",
+			"newUser",
+			"new User",
+			"templates/users/my-account.tpl",
+			"user-password-changed",
+			"scripts/views/users/user-account-view.js\nscripts/views/users/user-account-view.js\nscripts/views/users/user-account-view.js\nuser-account-view",
+			"views/projects/review/review-accounts-list-view",
+			"confirm_url",
+			"url =",
+			"verify-email",
+			"user-name",
+			"margin-left",
+			"success:",
+			"alert(",
+			"Alert",
+			"newUser",
+			"showAcceptableUsePolicy",
+			".ajax",
+			".ajax(",
+			".ajax9",
+			"DELETE",
+			"user =",
+			"event.currentTarget",
+			"checked",
+			"edit/updated",
+			"/updated",
+			"my-account/password-changed",
+			"my-account/change-password",
+			"my-account/updated",
+			"user-profile/change-password/user-password-changed.tpl",
+			"templates/users/user-profile/user-profile-updated.tpl",
+			"templates/users/user-profile/edit-user-profile.tpl",
+			"change-password",
+			"user-profile-deleted",
+			"delete-user-profile",
+			"edit-user",
+			"/password",
+			"templates/my-account/user-profile/new-user-profile-form",
+			"my-account",
+			"templates/my-account/user-profile/user-profile"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"projectUid",
+			"mediumBlue",
+			"Blue",
+			"2013 SWAMP",
+			"medium-green"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 284.0,
+	"status_bar_visible": true
+}

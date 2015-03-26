@@ -1,0 +1,12 @@
+#SetEnvIfNoCase REMOTE_ADDR "^127\.0\.0\1$"phase:1,nolog,allow,ctl:ruleEngine=Off
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{DOCUMENT_ROOT}/maintenance.html -f
+RewriteCond %{DOCUMENT_ROOT}/maintenance.enable -f
+RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+RewriteRule ^.*$ /maintenance.html [L]
+
+#RewriteRule ^.*$ /maintenance.html [R=503,L]
+#ErrorDocument 503 /maintenance.html
+#Header Set Cache-Control "max-age=0, no-store"

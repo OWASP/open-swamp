@@ -1,0 +1,65 @@
+/*
+ * directory tree view styles
+ */
+
+.directory {
+	.expander {
+		margin-left: 4px;
+		margin-right: 4px;
+		color: @primaryColor;
+		cursor: pointer;
+	}
+	input[type='checkbox'] {
+		margin-left: 4px;
+		margin-right: 4px;
+		margin-bottom: 8px;
+	}
+	i {
+		color: @primaryColor;
+		position: relative;
+	}
+	.name {
+		display: inline;
+	}
+	ul.contents {
+		margin-left: 20px;
+	}
+}
+
+/*
+.root.directory {
+	> .info {
+		display: none;
+	}
+	> .contents {
+		margin-left: 0;
+	}
+}
+*/
+
+.file {
+	margin-left: 24px;
+	i {
+		color: @primaryColor;
+		position: relative;
+	}
+	.size {
+		float: right;
+	}
+}
+
+.selected.file {
+	background-color: @primaryBackgroundColor;
+}
+
+.directory > .info {
+	display: block;
+}
+
+.selected.directory > .info {
+	background-color: @primaryBackgroundColor;
+}
+
+.build.file {
+	color: @secondaryColor;
+}

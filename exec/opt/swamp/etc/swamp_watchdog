@@ -1,0 +1,111 @@
+#!/usr/bin/env perl 
+use 5.007;
+use utf8;
+use strict;
+use warnings;
+
+use Carp qw(carp croak);
+use Getopt::Long qw/GetOptions/;
+use English '-no_match_vars';
+use Pod::Usage qw/pod2usage/;
+use File::stat;
+our $VERSION = '1.0.0';
+
+# Returns -1 for error (e.g. no user) or number of processes user has running
+sub userProcesses {
+    my $user = shift;
+    return -1 + `ps -u $user 2>/dev/null | wc -l`;
+}
+
+sub assessmentDisposition {
+    my $statusfile = shift;
+    my $ret        = q{UNKNOWN};
+    if ( -r $statusfile ) {
+        my $nErrs = 0 + `grep -c FAIL: $statusfile`;
+        if ( $nErrs > 0 ) {
+            $ret = q{FAIL};
+        }
+        else {
+            my $sawAll = 0 + `grep -c 'PASS: all' $statusfile`;
+            if ($sawAll) {
+                $ret = q{SUCCESS};
+            }
+        }
+    }
+    else {
+        $ret = q{UNKNOWN};
+    }
+    return $ret;
+}
+my @optionNames = qw(
+  user=s
+  statusfile=s
+  logfile=s
+  tsfile=s
+);
+my %options = (
+    'user'       => q{build},
+    'statusfile' => q{/mnt/out/status.out},
+    'logfile'    => q{/mnt/out/swamp_run.out},
+    'tsfile'     => q{/var/run/swamp.dog}
+);
+GetOptions( \%options, @optionNames );
+
+if ( userProcesses( $options{'user'} ) <= 0 ) {
+    my $aresult = assessmentDisposition( $options{'statusfile'} );
+    if ( $aresult eq q{SUCCESS} ) {
+        callshutdown("assessment succeeded");
+    }
+    else {
+        my $timeout = 30;    
+
+        if ( $aresult eq q{FAIL} ) {
+            # Until SSH access is widely available
+            # don't change the timeout
+            # $timeout = 30 * 60;    # 30 minutes
+        }
+        elsif ($aresult eq q{UNKNOWN} ) { # Assessment hasn't started yet
+            $timeout = 5 * 60;    # Give assessment 5 minutes to get started
+        }
+        my $st = stat( $options{'tsfile'} );
+        if ( defined($st) ) {
+            if ( time - $st->mtime > $timeout ) {
+                callshutdown("idle for more than $timeout seconds!");
+            }
+        }
+        else {                     # User isn't running processes, but we've not been here before
+            logit("No $options{'user'} processes, Seeding runfile");
+            breadcrumb( $options{'tsfile'} );
+        }
+    }
+}
+else {
+    # User still running processes, mark the timestamp of this
+    logit("Still processes from $options{'user'}, marking runfile");
+    breadcrumb( $options{'tsfile'} );
+}
+
+sub breadcrumb {
+    my $filename = shift;
+    `touch $filename`;
+    return;
+}
+
+sub callshutdown {
+    my $reason = shift;
+    logit("Shutdown: $reason");
+    `shutdown -h now`;
+    return;
+}
+
+sub logit {
+    my $msg = shift;
+    if ( open( my $fh, '>>', $options{'logfile'} ) ) {
+        my $ts = scalar localtime;
+        print $fh "$ts: $msg\n";
+        if (! close $fh) {
+            # Hmmm, cannot close the log file...where to complain            
+        }
+    }
+    return;
+}

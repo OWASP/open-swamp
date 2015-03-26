@@ -1,0 +1,6 @@
+scripts/config.js
+piwik/config/config.ini.php
+piwik/misc/How_to_install_Piwik.html
+piwik/tmp
+*.DS_Store
+*.swp

@@ -1,0 +1,145 @@
+/*
+ * table styles
+ */
+
+table {
+	width: 100%;
+
+	/*
+	 * table headers
+	 */
+
+	thead {
+		tr, tr.tablesorter {
+			.vertical-gradient(@primaryHighlightColor, @primaryColor);
+
+			th {
+				color: white;
+			}
+
+			th.headerSortDown, th.headerSortUp {
+				background-color: @primaryColor;
+			}
+		}
+	}
+
+	th {
+		color: white;
+		font-size: 14px;
+		padding-top: 7px;
+		padding-bottom: 3px;
+		padding-left: 5px;
+		padding-right: 5px;
+		white-space: nowrap;
+	}
+
+	/*
+	 * table cells
+	 */
+
+	td {
+		border: none;
+		padding: 10px;
+	}
+
+	td button {
+		i, .fa {
+			// color: @secondaryColor;
+			margin-right: 0;
+		}
+	}
+	
+	/*
+	 * zebra
+	 */
+
+	tr:nth-child(odd) {
+		background-color: @veryLightGrey;
+	}
+
+	tr:nth-child(even) {
+		background-color: @veryVeryLightGrey;
+	}
+
+	/*
+	 * rounded corners on first and last rows
+	 */
+
+	thead {
+		tr:first-child {
+			td:first-child, th:first-child, .first {
+				border-top-left-radius: 5px;
+			}
+			td:last-child, th:last-child, .last {
+				border-top-right-radius: 5px;
+			}
+		}
+	}
+	
+	tbody {
+		tr:last-child {
+			td:first-child, .first {
+				border-bottom-left-radius: 5px;
+			}
+			td:last-child, .last {
+				border-bottom-right-radius: 5px;
+			}
+		}
+	}
+
+	/*
+	 * prepended and appended columns
+	 */
+
+	th.prepend, th.append,
+	td.prepend, td.append {
+		width: 1px;
+		border: none;
+		background: white;
+	}
+
+	/*
+	 * special columns
+	 */
+
+	td.name {
+		white-space: nowrap;
+	}
+
+	td.date, td.version, td.package-type {
+		width: 15%;
+	}
+
+	td.description {
+		width: 50%;
+	}
+
+	td.status {
+		width: 1px;
+	}
+
+	td.results {
+		text-align: center;
+	}
+
+	td.select, th.select {
+		padding-left: 0px;
+		padding-right: 20px;
+		padding-top: 2px;
+	}
+
+	td.datetime, td.results {
+		white-space: nowrap;
+	}
+
+	/*
+	 * table elements
+	 */
+
+	button {
+		i {
+			margin-left: 0;
+			margin-bottom: 3px;
+		}
+	}
+}

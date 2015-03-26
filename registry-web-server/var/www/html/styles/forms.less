@@ -1,0 +1,240 @@
+/*
+ * input elements
+ */
+
+@inputBackground: @veryVeryLightGrey;
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+	background-color: @inputBackground;
+}
+
+.well, .accordion-inner {
+	textarea,
+	input[type="text"],
+	input[type="password"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="date"],
+	input[type="month"],
+	input[type="time"],
+	input[type="week"],
+	input[type="number"],
+	input[type="email"],
+	input[type="url"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="color"],
+	.uneditable-input {
+		background-color: white;
+	}
+}
+
+/*
+ * form fields
+ */
+
+.control-group {
+	span {
+		display: inline-block;
+	}
+
+	ul {
+		padding-left: 15px;
+		margin: 0;
+	}
+}
+
+.controls {
+	margin-left: 250px;
+}
+
+.required label:after, label.required:after, span.required:after { 
+	content: "*"; 
+	color: @mediumRed;
+	margin-left: 5px;
+}
+
+/*
+ * labels
+ */
+
+label {
+	margin-bottom: 15px;
+}
+
+.control-group label {
+	margin-bottom: 0px;
+}
+
+.control-label, .form-label {
+	padding-top: 0px;
+	float: left;
+	width: 200px;
+}
+
+.form-horizontal {
+	.control-label {
+		float: left;
+		text-align: right;
+		width: 200px;
+		padding-top: 5px;
+		padding-right: 15px;
+	}
+
+	.form-label {
+		float: left;
+		text-align: right;
+		width: 200px;
+		padding-right: 15px;
+	}
+}
+
+label span {
+	font-weight: normal;
+}
+
+textarea {
+	width: 360px;
+	resize: vertical;
+}
+
+/*
+ * form labels
+ */
+
+label {
+	cursor: default;
+}
+
+/*
+ * input elements
+ */
+
+form input[type="file"] {
+	height: auto;
+	line-height: 20px;
+	min-width: 240px;
+}
+
+input:disabled {
+	background-color: @veryVeryLightGrey;
+}
+
+form {
+	input#postal-code {
+		min-width: 0;
+		width: auto;
+	}
+	input#country-code, input#area-code, input#phone-number {
+		min-width: 0;
+		width: auto;
+	}
+	input#area-code {
+		// margin-left: 20px;
+	}
+	input#phone-number {
+		// margin-left: 20px;
+	}
+}
+
+form.run-requests-form {
+	select {
+		width: 100%;
+	}
+	td,th {
+		width: 33%;
+	}
+	td {
+		vertical-align: top;
+	}
+	td.last {
+		text-align: center;
+	}
+	input {
+		min-width: 0;
+	}
+	label.error {
+		margin-left: 0;
+		padding-top: 5px;
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+	.error .add-on {
+		border-color: @mediumRed;
+	}
+	.input-append {
+		margin-bottom: 0;
+	}
+	.control-group {
+		margin-bottom: 0;
+	}
+	.day-of-the-month {
+		width: 125px;
+	}
+}
+
+form.invitations-form {
+	td {
+		vertical-align: top;
+		text-align: center;
+	}
+	label.error {
+		margin-left: 0;
+		padding-top: 5px;
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+}
+
+/*
+ * country selector
+ */
+
+#country-selector button img {
+	margin-top: -3px;
+	margin-left: 5px;
+}
+
+/*
+ * time and date input selector
+ */
+
+ .type select, .day select {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+input[type="number"] {
+	width: 100px;
+}
+
+input[type="time"] {
+	width: 100px;
+}
+
+/*
+ * dropdown menus
+ */
+
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
+	background: @primaryColor;
+}
+
+.select2-drop {
+	min-width: 125px;
+}

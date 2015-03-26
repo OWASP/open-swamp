@@ -1,0 +1,79 @@
+/*
+ * accordions
+ */
+
+.accordion {
+	margin-top: 0;
+	margin-bottom: 0; 
+
+	.accordion-heading {
+		label {
+			display: inline-block;
+			padding: 5px;
+		}
+
+		i {
+			margin-top: -2px;
+			margin-left: 4px;
+			margin-right: 4px;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		> h3 {
+			display: inline-block;
+			margin-right: 10px;
+			margin: 0;
+		}
+
+		.tag:first-child {
+			margin-left: 25px;
+		}
+
+		.tag {
+			padding: 2px;
+			display: inline-block;
+		}
+	}
+
+	.accordion-inner {
+		border: 1px solid @veryLightGrey;
+		border-radius: 10px;
+		background: @veryVeryLightGrey;
+		margin-bottom: 20px;
+
+		.row-fluid label {
+			padding-top: 5px;
+			padding-right: 5px;
+			float: left;
+		}
+
+		h3 {
+			margin-top: 0;
+		}
+	}
+
+	.nested.accordion-body {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	fieldset {
+		 margin-right: 20px; 
+	}
+
+	.well {
+		margin-bottom: 20px;
+	}
+}
+
+.filters .accordion-heading {
+	margin: 15px;
+}
+
+form .accordion {
+	margin-right: 20px;
+}
+

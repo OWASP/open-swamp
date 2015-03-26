@@ -1,0 +1,285 @@
+#!/usr/bin/env perl
+
+use 5.010;
+use utf8;
+use warnings;
+use strict;
+use sigtrap 'handler', \&trap_handler, 'normal-signals';
+use FindBin;
+use lib "$FindBin::Bin/../perl5";
+
+use Getopt::Long qw/GetOptions/;
+use Pod::Usage qw/pod2usage/;
+use English '-no_match_vars';
+use Carp 'croak';
+
+use VMTools qw(
+checkEffectiveUser consoleMsg errorMsg extractOutput init logMsg pkgshutdown 
+startVM
+defineVM
+listMasters
+listVMs
+initProjectLog
+createImages
+createXML
+setvmimagedir
+setvmprojectdir
+vmVNCDisplay
+vmExists
+vmState);
+use VMConstants;
+
+my $help       = 0;
+my $man        = 0;
+my $dolist     = 0;
+my $doversion  = 0;
+my $dolistmine = 0;
+our $VERSION = '1.04';
+my $restart = q{};
+my $outsize = VMConstants->DEFAULT_OUTSIZE_MB;
+my $nCPU    = VMConstants->DEFAULT_NCPU;
+my $memMB   = VMConstants->DEFAULT_RAM_MB;
+my $MAXOUT  = VMConstants->MAX_OUTSIZE_MB;
+my $vmname  = sprintf 'vm-%X', time . $PID;
+my $macaddr;
+my $vmfolder;
+my $vmimagefolder;
+
+GetOptions(
+    'vmfolder=s' => \$vmfolder,
+    'vmimagefolder=s' => \$vmimagefolder,
+    'list'      => \$dolist,
+    'restart=s' => \$restart,
+    'outsize=i' => \$outsize,
+    'name=s'    => \$vmname,
+    'cpu=i'     => \$nCPU,
+    'mem=i'     => \$memMB,
+    'MAC=s'     => \$macaddr,
+    'mine'      => \$dolistmine,
+    'V|version' => \$doversion,
+    'help|?'    => \$help,
+    'man'         => \$man,
+) or pod2usage(2);
+if ($help) { pod2usage(1); }
+if ($man) { pod2usage( '-verbose' => 2 ); }
+
+if ($doversion) {
+    print "start_vm : $VERSION\n";
+    print " VMTools : $VMTools::VERSION\n";
+    exit 0;
+}
+
+setvmprojectdir($vmfolder);
+setvmimagedir($vmimagefolder);
+
+if ( $restart ne q{} ) { $vmname = $restart; }
+
+# need to enforce max size
+#if ($outsize > $MAXOUT) {
+#    print STDERR "Maximum output filesystem size is ${MAXOUT}M.";
+#    return 1;
+#}
+if ( $memMB > VMConstants->MAX_HYPERMEM_MB ) {
+    print {*STDERR} "Maximum memory is limited to 32768 MB\n";
+    exit 1;
+}
+my $dirpath   = shift || q{};
+my $imagename = shift || q{};
+sub checkOptions {
+    if ( $vmname eq q{} ) { 
+        pod2usage('vm-name option is required.'); 
+    }
+    elsif ( $restart eq q{} ) {
+        if ( $dirpath eq q{} ) { 
+            pod2usage('dir-path option is required.'); 
+        }
+        elsif ( $imagename eq q{} ) {
+            pod2usage('existings-vm-image-name option is required.');
+        }
+    }
+    return;
+}
+# if only listing images, all other options are optional.
+if ( !$dolist && !$dolistmine ) {
+    checkOptions();
+}
+
+if ( !checkEffectiveUser() ) {
+    print {*STDERR}
+      "You should run this script as root. Ex: sudo $PROGRAM_NAME\n";
+    exit 1;
+}
+
+if ($dolist) {
+    my @list = listMasters();
+    foreach (@list) {
+        print "$_\n";
+    }
+    exit 0;
+}
+elsif ($dolistmine) {
+    my @list = listVMs();
+    foreach (@list) {
+        print "$_\n";
+    }
+    exit 0;
+}
+
+if ( $restart eq q{} && !-d $dirpath ) {
+    print {*STDERR} "Input dir-path '$dirpath' is not a directory.\n";
+    exit 1;
+}
+
+init( $vmname, 'start_vm', 0 );
+logMsg('start_vm started');
+
+if ( $restart eq q{} ) {
+    if ( vmExists($vmname) ) {
+        errorMsg("A VM of this name ($vmname) already exists.");
+        exit 1;
+    }
+    createImages( $dirpath, $vmname, $imagename, $outsize, 0 );
+    createXML( 'vmname'=> $vmname, 'nCPU' => $nCPU, 'memMB' => $memMB, 'imagename' => $imagename, 'macaddr' => $macaddr, 'isMaster' => 0 );
+    defineVM($vmname);
+}
+
+initProjectLog($vmname);
+
+my $ret = ( startVM($vmname) );
+
+handleStart($ret);
+
+sub handleStart {
+    my ($arg)=@_;
+    my $msg;
+    if ( $arg == 0 ) {
+        if ( $restart eq q{} ) {
+            $msg = "Started $imagename VM named $vmname with ${outsize}MB output disk, $nCPU cpus, ${memMB}MB memory .";
+        }
+        else {
+            $msg = "Restarted VM named $vmname";
+        }
+    }
+    else {
+        # clean up project folder? Eventually, but for now leave it for troubleshooting.
+        $msg = "Unable to start $vmname.";
+    }
+    consoleMsg($msg);
+    return;
+}
+
+pkgshutdown();
+exit $ret;
+
+sub trap_handler {
+
+    # clean up partially created VMs
+    pkgshutdown();
+    croak "Caught signal @_, shutting down";
+}
+__END__
+################ Documentation ################
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+start_vm - start a named VM
+
+=head1 SYNOPSIS
+
+start_vm [--version] [--list] [--mine] [--outsize MB] [--restart vm-name] [dir-path] [--name vm-name] [existing-vm-image-name] [--cpu nCPU] [--mem MB]  [--MAC MAC-address ]
+
+=head1 DESCRIPTION
+
+Use the command start_vm to start a named VM with an input disk and output disk and report its hostname. The input disk will be created from the contents of the specified directory path. The vm will complete its startup process by running the script called run.sh in the input disk, if it exists. You will be able to transfer the contents of the VM's output disk to a specified directory when the VM terminates using the vm_output command. An optional --list argument will list the available VM images you can instantiate. You can define the size of the output disk with the --outsize argument (in MB) with a default, if unspecified, of 20MB. You can restart a previously started (but currently shut down) VM using the --restart command.
+
+=over 8
+
+=item --version
+
+Display script version and exit.
+
+=item --list
+
+List available VMs for instantiation
+
+=item --mine
+
+List VMs created by the invoking user.
+
+=item --outsize I<size>
+
+Maximum size of the output disk in MB. Default is 20MB.
+
+=item --restart I<vm-name>
+
+Restart an existing, but currently shutdown, VM
+
+=item I<dir-path>
+
+The path to the files to be used in creation of the input disk
+
+=item --cpu I<nCPU>
+
+Specify the number of CPU(s) for the VM. Maximum depends on hypervisor.
+
+=item --MAC <mac address>
+
+Specify the MAC address for the VM. N.B. this takes its input as a string and accepts to be a MAC address.
+
+=item --mem I<nMB>
+
+Specify amount of memory for the VM, in megabytes. Maximum depends on the available memory on the hypervisor.
+
+=item --name I<vm-name>
+
+The name to give to the VM if creating a new VM or the name of an existing VM if restarting a VM. 
+If no vm-name is provided, a unique name will be generated.
+
+=item I<existing-vm-image-name>
+
+The name of an existing image on which to base vm-name. This must be one of the names listed by the --list option.
+
+=back
+
+=head1 EXAMPLES
+
+$ start_vm --list
+
+fedora-18.0-64
+
+debian-7.0-64
+
+rhel-6.4-64
+
+rhel-6.4-32
+
+scientific-6.4-64
+
+scientific-5.9-64
+
+ubuntu-12.04-64
+
+$ start_vm ./packages/irods --name irods-vm rhel-6.4-64 -outsize 50 --cpu 4
+
+Started rhel-6.4-64 VM named irods-vm with 50MB output disk and 4 cpus.
+
+# If no --name is provided, a unique one is generated
+
+$ start_vm ./packages/irods debian-7.0-64 
+
+Started debian-7.0-64 VM named vm-7CA4500BADBC with 20MB output disk and 2 cpus.
+
+$ start_vm --mine
+
+irods-vm
+
+vm-7CA4500BADBC
+
+=head1 SEE ALSO
+
+L<vm_output|vm_output>, L<vm_cleanup|vm_cleanup>, L<virsh|virsh(1)>
+
+=cut

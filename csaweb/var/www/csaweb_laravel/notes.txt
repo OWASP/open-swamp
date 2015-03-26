@@ -1,0 +1,26 @@
+# setting the environment
+#
+
+By default, Laravel will return "production" as the environment.  When running locally, we'd like it to return "local".
+
+To do so, we need to modify "bootstrap/start.php" as follows:
+
+$env = $app->detectEnvironment(array(
+
+	// local
+	//
+	'local' => array('<your local machine name here>'),
+
+	// development
+	//
+	'development' => array('swa-csaweb-dt-02.mirsam.org'),
+
+	// integration
+	//
+	'integration' => array('swa-csaweb-it-01.mirsam.org')
+));
+
+To get your local machine name, type "hostname" into your local machine's shell.
+Once you change your "bootstrap/start.php", you'd like this change to be ignored by git.  To do so type:
+
+git update-index --assume-unchanged start.php

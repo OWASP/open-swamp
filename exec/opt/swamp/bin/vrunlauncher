@@ -1,0 +1,7 @@
+#!/bin/bash
+export PATH=/usr/bin:/usr/local/bin:/bin
+export PERLBREW_ROOT=/opt/perl5
+export PERLBREW_HOME=/tmp/.perl5
+source $PERLBREW_ROOT/etc/bashrc
+perlbrew use perl-5.18.1
+sudo /opt/perl5/perls/perl-5.18.1/bin/perl -I/opt/swamp/perl5 /opt/swamp/bin/vrunTask.pl "$@"

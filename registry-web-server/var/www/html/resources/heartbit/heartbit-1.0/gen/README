@@ -1,0 +1,36 @@
+/*
+ * HeartBit -- the HeartBeat Simulator Framework
+ *
+ * Copyright (C) 2014 Bolo -- Josef T. Burger
+ *
+ * All original work here is distributed via a BSD license terms.
+ * Basically you are free to use it and you can't take credit for it.
+ */
+
+This is a generator for "packets" for heartbit, the redacted openssl
+heartbeat demonstrator.
+
+The code here is a more full version of that in the redacted openssl
+code.   Basically the additions here are a plug-in interface that allows
+an actual openssl heartbeat packet to be generated using the exact
+openssl code which does so:
+
+	tls1_heartbeat()
+
+The minimal interfaces, buffering and output structure of openssl
+is duplicated to allow use of that function in-situ.
+
+There is a custom function
+
+	tls1_heartbleed()
+
+which allows generation of "heartbleed" packets with arbitrary length
+requests in them, subject to the 16 bit packet limitations.
+
+
+This is the exact tool used to generate the valid heartbeat and
+invalid "heartbleed" packets that are used to demonstrate the heartbleeds
+in the redacted ssl heartbit commands.
+
+You can regenerate the packets using the tool and use the 'diff' target
+in the Makefile to see if they compare to prior versions.

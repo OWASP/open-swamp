@@ -1,0 +1,256 @@
+#!/usr/bin/env perl 
+#** @file swamp_config.pl
+#
+# @brief Application for manipulating the swamp configuration file.
+# This script allows for the specification of
+# dispatcher host:port
+# agentmonitor host:port
+# quartermaster host:port
+# hypervisor(s)
+# default logging level
+# @author Dave Boulineau (db), dboulineau@continuousassurance.org
+# @date 09/27/2013 11:27:48
+# @copy Copyright (c) 2013 Software Assurance Marketplace, Morgridge Institute for Research
+#*
+
+use 5.010;
+use utf8;
+use warnings;
+use strict;
+use FindBin;
+use lib ( "$FindBin::Bin/../perl5", "$FindBin::Bin/lib" );
+
+use Carp qw(carp croak);
+use ConfigReader::Simple;
+use English '-no_match_vars';
+use File::Spec qw(catfile);
+use Getopt::Long qw/GetOptions/;
+use Log::Log4perl::Level;
+use Log::Log4perl;
+use Pod::Usage qw/pod2usage/;
+
+use SWAMP::SWAMPUtils qw(findConfig getSWAMPDir trim getLoggingConfigString);
+my $help = 0;
+my $man  = 0;
+my $configFile;
+my $dispatcher;
+my $quartermaster;
+my $agentmonitor;
+my @hypervisors;
+my $showversion;
+my $outfile;
+my @getprop;
+my @setprop;
+my $proplist = 0;
+our $VERSION = '1.00';
+
+GetOptions(
+    'help|?'            => \$help,
+    'config|C=s'        => \$configFile,
+    'quartermaster|Q=s' => \$quartermaster,
+    'agentmonitor|A=s'  => \$agentmonitor,
+    'dispatcher|D=s'    => \$dispatcher,
+    'hypervisors=s'     => \@hypervisors,
+    'proplist=s'        => \$proplist,
+    'propset=s{2}'      => \@setprop,
+    'propget=s'         => \@getprop,
+    'out=s'             => \$outfile,
+    'version|V'         => \$showversion,
+    'man'               => \$man,
+) or pod2usage(2);
+
+if ($help) { pod2usage(1); }
+if ($man) { pod2usage( '-verbose' => 2 ); }
+if ($showversion) {
+    print "$PROGRAM_NAME: v$VERSION\n";
+    exit 0;
+}
+Log::Log4perl->init( getLoggingConfigString() );
+
+my $log = Log::Log4perl->get_logger(q{});
+
+if ( !defined($configFile) ) {
+    $configFile = findConfig();
+}
+if ( !defined($outfile) ) {
+    $outfile = $configFile;
+}
+@hypervisors = split( /,/sxm, join( q{,}, @hypervisors ) );
+my %hosts;
+my %ports;
+parseOpt( { 'opt' => $agentmonitor, 'key' => q{agentmonitor}, 'host' => \%hosts, 'port' => \%ports } );
+parseOpt( {
+    'opt'  => $quartermaster,
+    'key'  => q{quartermaster},
+    'host' => \%hosts,
+    'port' => \%ports }
+);
+parseOpt( { 'opt' => $dispatcher, 'key' => q{dispatcher}, 'host' => \%hosts, 'port' => \%ports } );
+my $config = ConfigReader::Simple->new($configFile);
+my @hosts  = qw(agentmonitor dispatcher quartermaster);
+
+my $changeConfig = 0;
+foreach my $host (@hosts) {
+    if ( defined( $hosts{$host} ) ) {
+        $config->set( "${host}Host", $hosts{$host} );
+        $changeConfig++;
+    }
+    if ( defined( $ports{$host} ) ) {
+        $config->set( "${host}Port", $ports{$host} );
+        $changeConfig++;
+    }
+}
+if (@hypervisors) {
+    $changeConfig++;
+    $config->set( 'hypervisors', @hypervisors );
+}
+if (@setprop) {
+    my $idx = 0;
+    while ( $idx < $#setprop ) {
+        if ( $setprop[$idx] !~ /^method/sxm ) {
+            $changeConfig++;
+            $config->set( $setprop[$idx], $setprop[ 1 + $idx ] );
+        }
+        else {
+            $log->warn("Methods cannot be set.");
+        }
+        $idx += 2;
+    }
+}
+if (@getprop) {
+    foreach my $prop (@getprop) {
+        if ( $config->exists($prop) ) {
+            print $config->get($prop), "\n";
+        }
+    }
+}
+if ( defined($proplist) ) {
+    foreach my $prop ( $config->directives() ) {
+        if ( $prop =~ /$proplist/sxm ) {
+            print "$prop = " . $config->get($prop) . "\n";
+        }
+    }
+
+}
+if ( $changeConfig != 0 ) {
+    saveConfig({ 'config' => $config, 'file' => $configFile, 'outfile' => $outfile });
+}
+
+#if ( $changeConfig == 0 ) { pod2usage(1); }
+
+sub parseOpt {
+    my ($options) = @_;
+    my $opt     = $options->{'opt'};
+    my $key     = $options->{'key'};
+    my $hostref = $options->{'host'};
+    my $portref = $options->{'port'};
+
+    if ( !defined($opt) ) {
+        return;
+    }
+    ( $hostref->{$key}, $portref->{$key} ) = split( /:/sxm, $opt );
+    if ( !length( $hostref->{$key} ) ) { delete $hostref->{$key}; }
+    if ( !length( $portref->{$key} ) ) {
+        delete $portref->{$key};
+    }
+    else {
+        $portref->{$key} = $portref->{$key} + 0;
+    }
+    return;
+}
+
+sub saveConfig {
+    my ($options) = @_;
+    my $configobj  = $options->{'config'};
+    my $cfgFile = $options->{'file'};
+    my %seen;                           # Map of directives in config not new
+    if ( open( my $fh, '<', $cfgFile ) ) {
+        my @file;                       # The array of config file lines.
+        while (<$fh>) {
+            chomp;
+            if (/^\#/sxm) {
+                push @file, $_;
+            }
+            elsif (/=/sxm) {
+                my ( $keyA, $junk ) = split( /=/sxm, $_ );
+                $keyA = trim($keyA);
+                if ( $configobj->exists($keyA) ) {
+                    my $val = $configobj->get($keyA);
+                    if ( $val ne qq{} ) {
+                        push @file, "$keyA = $val";
+                    }
+                    #else setting a property to "" is deletion
+                    $seen{$keyA} = 1;
+                }
+            }
+            else {
+                push @file, $_;
+            }
+        }
+        if (!close($fh)) {
+                $log->warn("Unable to close config file $cfgFile $OS_ERROR");
+        }
+        # Now add any new properties
+        foreach my $prop ( $configobj->directives() ) {
+            if ( !defined( $seen{$prop} ) ) {
+                push @file, "$prop = " . $configobj->get($prop);
+            }
+        }
+
+        # Write @file back out
+        if ( open( my $fh, '>', $options->{'outfile'} ) ) {
+            foreach my $line (@file) {
+                print $fh "$line\n";
+            }
+            if (!close($fh)) {
+                $log->warn("Unable to close config file $options->{'outfile'} $OS_ERROR");
+            }
+        }
+        else {
+            $log->error("Unable to open config file $options->{'outfile'} $OS_ERROR");
+        }
+    }
+    else {
+        $log->error("Unable to open config file $options->{'outfile'} $OS_ERROR");
+    }
+
+    return;
+
+}
+sub logtag {
+    return 'swamp_config';
+}
+sub logfilename {
+    return File::Spec->catfile(getSWAMPDir(), 'log', 'swamp_config');
+}
+__END__
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+
+=head1 SYNOPSIS
+
+
+
+=head1 DESCRIPTION
+
+=head1 OPTIONS
+
+=over 8
+
+=item --man
+
+Show manual page for this script
+
+=back
+
+=head1 EXAMPLES
+
+=head1 SEE ALSO
+
+=cut
+
+

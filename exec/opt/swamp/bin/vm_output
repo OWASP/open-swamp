@@ -1,0 +1,141 @@
+#!/usr/bin/env perl
+
+use 5.010;
+use utf8;
+use strict;
+use warnings;
+use FindBin;
+use lib "$FindBin::Bin/../perl5";
+
+use Getopt::Long qw/GetOptions/;
+use Pod::Usage qw/pod2usage/;
+use English '-no_match_vars';
+
+use VMTools qw(checkEffectiveUser consoleMsg errorMsg extractOutput init logMsg
+  pkgshutdown setvmprojectdir setvmimagedir vmExists vmState);
+
+our $VERSION = '0.98';
+my $help      = 0;
+my $man       = 0;
+my $doversion = 0;
+my $vmfolder;
+my $vmimagefolder;
+
+GetOptions(
+    'vmfolder=s' => \$vmfolder,
+    'vmimagefolder=s' => \$vmimagefolder,
+    'V|version'  => \$doversion,
+    'help|?'     => \$help,
+    'man'        => \$man,
+) or pod2usage(2);
+
+if ($help) { pod2usage(1); }
+if ($man) { pod2usage( '-verbose' => 2 ); }
+
+if ($doversion) {
+    print " vm_output : $VERSION\n";
+    print "   VMTools : $VMTools::VERSION\n";
+    exit 0;
+}
+
+setvmprojectdir($vmfolder);
+setvmimagedir($vmimagefolder);
+
+my $vmname  = shift || q{};
+my $dirpath = shift || q{};
+
+if ( $vmname eq q{} ) { pod2usage('vm-name option is required.'); }
+if ( $dirpath eq q{} ) { pod2usage('dir-path option is required.'); }
+
+if ( !-d $dirpath ) {
+    print {*STDERR} "output folder '$dirpath' does not exist.\n";
+    exit 1;
+}
+else {
+}
+
+if ( !checkEffectiveUser() ) {
+    print {*STDERR}
+      "You should run this script as root. Ex: sudo $PROGRAM_NAME\n";
+    exit 1;
+}
+
+init( $vmname, 'vm_output', 0 );
+logMsg('vm_output start');
+
+opendir(my $dir, $dirpath);
+my @files = readdir $dir;
+closedir $dir;
+foreach (@files) {
+    next if ( $_ eq q{.} || $_ eq q{..} );
+    errorMsg('Error: output folder is not empty.');
+    exit 1;
+}
+
+if ( vmExists($vmname) ) {
+    my $state = vmState($vmname);
+    if ( $state eq 'running' ) {
+        errorMsg(
+"output from VM $vmname cannot be extracted at this time, it is still running.");
+    }
+    else {
+        if ( extractOutput( $dirpath, $vmname ) ) {
+            consoleMsg("VM $vmname has been removed from the system.");
+        }
+    }
+}
+else {
+    errorMsg("Cannot find a VM named $vmname");
+}
+pkgshutdown();
+
+exit 0;
+
+__END__
+
+################ Documentation ################
+
+=pod
+
+=encoding utf8
+
+
+=head1 NAME
+
+vm_output - extract the contents of a VMs output disk into a specified directory
+
+=head1 SYNOPSIS
+
+vm_output [--version] vm-name dir-path
+
+=head1 DESCRIPTION
+
+Use the command vm_output to extract the output disk of a shutdown VM into a specified directory.
+
+=head1 OPTIONS
+
+=over 8
+
+=item --version
+
+Display script version and exit.
+
+=item I<vm-name>
+
+The name of the VM from which output will be extracted. The VM must be shutdown.
+
+=item I<dir-path>
+
+Folder into which the output will be placed. Does not have to exist.
+
+=back
+
+=head1 EXAMPLES
+
+$ vm_output redhat6 ~/output/redhat6out
+
+=head1 SEE ALSO
+
+L<start_vm|start_vm>, L<vm_cleanup|vm_cleanup>, L<virsh manual|virsh(1)>
+
+=cut

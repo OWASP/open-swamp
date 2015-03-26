@@ -1,0 +1,67 @@
+/*
+ * popover border attributes
+ */
+
+ @popoverBorderWidth: 1px;
+ @popoverArrowBorderWidth: 2px;
+ @popoverBorderColor: @primaryColor;
+ @popoverMargin: 15px;
+
+/*
+ * popover title
+ */
+
+.popover-title {
+	color: white;
+	font-weight: bold;
+	background-color: @primaryColor;
+}
+
+.popover {
+	border-color: @popoverBorderColor;
+	border-width:  @popoverBorderWidth;
+	padding: 0;
+	// min-width: 200px;
+}
+
+/*
+ * popover arrow styles
+ */
+
+.popover.right {
+	margin-left: @popoverMargin;
+	.arrow {
+		border-right-color: @popoverBorderColor;
+	}
+	.arrow:after {
+		left: @popoverArrowBorderWidth;
+	}
+}
+
+.popover.left {
+	margin-right: @popoverMargin;
+	.arrow {
+		border-left-color: @popoverBorderColor;
+	}
+	.arrow:after {
+		right: @popoverArrowBorderWidth;
+	}
+}
+
+.popover.top {
+	.arrow {
+		border-top-color: @popoverBorderColor;
+	}
+	.arrow:after {
+		bottom: @popoverArrowBorderWidth;
+	}
+}
+
+.popover.bottom {
+	.arrow {
+		border-bottom-color: @popoverBorderColor;
+	}
+	.arrow:after {
+		top: @popoverArrowBorderWidth;
+	}
+}

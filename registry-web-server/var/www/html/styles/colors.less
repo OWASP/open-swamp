@@ -1,0 +1,57 @@
+
+/*
+ * golds
+ */
+
+/*
+@darkGold: DarkGoldenRod;
+@mediumGold: GoldenRod;
+@lightGold: GoldenRod;
+@paleLightGold: #fff4d9;
+*/
+
+@darkGold: #998342;
+@mediumGold: #bfa452;
+@lightGold: #e5c563;
+@paleLightGold: #f2e3b6;
+
+/*
+ * reds
+ */
+
+@darkRed: #b94a48;
+@mediumRed: #c2002f;
+@lightRed: #eed3d7;
+@veryLightRed: #f2dede;
+
+/*
+ * greens
+ */
+
+ @darkGreen: #337f33;
+ @mediumGreen: #339933;
+
+/*
+ * greys
+ */
+
+@veryDarkGrey: #333333;
+@darkGrey: #58585b;
+@mediumGrey: #939597;
+@lightGrey: #cccccc;
+@veryLightGrey: #e7e7e7;
+@veryVeryLightGrey: #f7f7f7;
+@ultraLightGrey: #fcfcfc;
+
+/*
+ * gradients
+ */
+
+.vertical-gradient (@startColor: #eee, @endColor: white) {
+	background-color: @startColor;
+	background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+	background: -webkit-linear-gradient(top, @startColor, @endColor);
+	background: -moz-linear-gradient(top, @startColor, @endColor);
+	background: -ms-linear-gradient(top, @startColor, @endColor);
+	background: -o-linear-gradient(top, @startColor, @endColor);
+}

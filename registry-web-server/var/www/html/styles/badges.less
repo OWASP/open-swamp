@@ -1,0 +1,21 @@
+/*
+ * badges
+ */
+
+.badge {
+	font-family: "Gill Sans MT", "Gill Sans", Calibri, sans-serif;
+	font-weight: bold;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	.vertical-gradient(@primaryHighlightColor, @primaryColor);
+	border: 2px solid white;
+	box-shadow: 2px 2px 5px -2px rgba(0, 0, 0, 0.5);
+}
+
+/*
+ * colored badges
+ */
+
+.badge-important {
+	.vertical-gradient(@mediumGrey, @veryDarkGrey);
+}

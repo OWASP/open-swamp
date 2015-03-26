@@ -1,0 +1,5 @@
+SWAMP:1.17.DEV.813
+c-assess:0.9.6
+java-assess:2.0.1
+python-assess:0.8.5
+resultparser:1.2.1

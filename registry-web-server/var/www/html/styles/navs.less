@@ -1,0 +1,312 @@
+/*
+ * link colors
+ */
+
+@linkColor: @secondaryColor;
+@linkColorHover: @primaryColor;
+@navLinkColor: @secondaryColor;
+@navLinkColorHover: white;
+
+/*
+ * dropdown colors
+ */
+
+@dropdownColor: @primaryColor;
+@dropdownBackground: white;
+@dropdownLinkColorHover: white;
+@dropdownLinkBackgroundHover: @primaryHoverColor;
+
+/*
+ * general navigation
+ */
+
+.nav {
+	h2 {
+		margin-top: 0;
+	}
+
+	.badge {
+		margin-left: 10px;
+	}
+}
+
+/*
+ * nav bars 
+ */
+
+.well.nav {
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 20px;
+
+	li {
+		a {
+			box-shadow: -2px -2px 2px -2px rgba(0, 0, 0, 0.5);
+
+			i {
+				color: @darkGrey;
+			}
+		}
+	}
+}
+
+.nav {
+	li.selected, li.active, li a:hover {
+		a {
+			i {
+				color: white;
+			}
+		}		
+	}	
+}
+
+/*
+ * top navigation bar 
+ */
+
+.navbar, .navbar-inverse {
+	background-image: none;
+	border: none;
+	box-shadow: 0 5px 10px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+
+	.navbar-inner {
+		padding-top: 2px;
+	}
+
+	.nav > li {
+		cursor: pointer;
+
+		a.brand {
+			color: white;
+			margin-left: 0px;
+			text-shadow: none;
+		}
+	}	
+}
+
+.navbar .nav > li > 
+.navbar-inverse .nav .active > a,
+.navbar-inverse .nav .active > a:hover,
+.navbar-inverse .nav .active > a:focus {
+	background-color: white;
+}
+
+.nav > li > a:hover, .navbar .nav > li > a.active {
+	color: white;
+	background-color: @primaryColor; 
+	.vertical-gradient(@primaryHighlightColor, @primaryColor);
+	pointer: default;
+
+	i {
+		color: white;
+	}
+}
+
+.nav-tabs > li > a,
+.nav-pills > li > a {
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+/*
+ * links
+ */
+
+a {
+	color: @linkColor;
+}
+
+a:hover, a:focus {
+	color: @linkColorHover;
+}
+
+/*
+ * header navigation
+ */
+
+.navbar {
+	.nav > li > a {
+		color: @primaryColor;
+		text-shadow: none;
+	}
+
+	.nav > li > a:focus {
+		color: @navLinkColorHover;
+		background-color: @dropdownLinkBackgroundHover;
+	}
+}
+
+.nav > li > a {
+	color: @navLinkColor;
+	text-shadow: none;
+	border: 1px solid transparent;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+	color: @navLinkColorHover;
+	.vertical-gradient(@primaryHoverColor, @primaryColor);
+}
+
+.nav > li > a:focus {
+	border: 1px solid @primaryBorderColor;
+}
+
+/*
+ * tiles
+ */
+
+.well.tile {
+	box-shadow: -2px -2px 4px -2px rgba(0, 0, 0, 0.25) inset;
+
+	li {
+		i {
+			color: @darkGrey;
+		}
+
+		a:hover {
+			.vertical-gradient(@primaryHighlightColor, @primaryColor);
+			color: white !important;
+		}
+
+		a {
+			background: @veryVeryLightGrey;
+		}
+	}
+
+	li:hover {
+		i {
+			color: white;
+		}
+	}
+}
+
+.well.tile:hover {
+	color: @primaryColor;
+}
+
+.well.tile.selected:hover {
+	color: white;
+}
+
+/*
+ * dropdowns
+ */
+
+.dropdown-menu {
+	background-color: @dropdownBackground;
+ }
+
+ .dropdown-menu > li > a {
+	color: @dropdownColor;
+ }
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-submenu:hover > a,
+.dropdown-submenu:focus > a {
+	text-decoration: none;
+	color: @dropdownLinkColorHover;
+	background-color: @dropdownLinkBackgroundHover;
+	background-image: none;
+}
+
+#welcome-message {
+	span {
+		color: @primaryColor;
+		margin-right: 10px;
+	}
+	#username span {
+		color: white;
+	}
+}
+
+/*
+ * dropdown carats
+ */
+
+.nav .dropdown-toggle .caret {
+	border-top-color: @linkColor;
+	border-bottom-color: @linkColor;
+}
+.nav .dropdown-toggle:hover .caret,
+.nav .dropdown-toggle:focus .caret {
+	border-top-color: @linkColorHover;
+ }
+
+/* 
+ * cause menus to show on hover rather than click
+ */
+
+ul.nav li.dropdown:hover > ul.dropdown-menu{
+	display: block;    
+}
+
+/*
+ * icons
+ */
+
+ .icon2x {
+	-webkit-transform:scale(2.0);
+	-moz-transform:scale(2.0);
+	-o-transform:scale(2.0);
+	margin: 10px;
+	margin-top: 0;
+}
+
+.icon3x {
+	-webkit-transform:scale(3.0);
+	-moz-transform:scale(3.0);
+	-o-transform:scale(3.0);
+	margin: 15px;
+	margin-top: 0;
+}
+
+/*
+ * icons
+ */
+
+.active:hover {
+	i {
+		color: @primaryColor;
+	}
+}
+.active.selected:hover {
+	i {
+		color: white;
+	}
+}
+
+.nav [class^="icon-"], button [class^="icon-"], h3 [class^="icon-"],
+.nav [class*=" icon-"], button [class*=" icon-"], h3 [class*=" icon-"] {
+	margin-top: -2px;
+	margin-right: 5px;
+}
+
+.nav i, button i, h3 i {
+	margin-right: 5px;
+}
+
+/*
+ * input append icons
+ */
+
+span.add-on [class^="icon-"],
+span.add-on [class*=" icon-"] {
+	margin: 0;
+}
+
+/*
+ * breadcrumbs
+ */
+
+.breadcrumb {
+	background: transparent;
+	padding: 0;
+	margin-bottom: 20px;
+
+	i {
+		margin-right: 5px;
+	}
+}

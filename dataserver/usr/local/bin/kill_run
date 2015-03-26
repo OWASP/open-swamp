@@ -1,0 +1,6 @@
+#!/bin/bash
+export PERLBREW_ROOT=/opt/perl5
+source ${PERLBREW_ROOT}/etc/bashrc
+export PERL5LIB=/opt/swamp/perl5
+perlbrew use perl-5.18.1
+perl /opt/swamp/bin/killrun.pl "$@"

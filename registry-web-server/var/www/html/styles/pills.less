@@ -1,0 +1,83 @@
+/*
+ * navigation pill elements 
+ */
+
+.nav-pills {
+	li {
+		cursor: pointer;
+		a {
+			padding-left: 15px;
+			padding-right: 15px;
+			margin-right: 10px;
+		}
+	}
+}
+
+.nav-pills.well {
+	background-color: transparent;
+	box-shadow: none;
+
+	li a {
+		background-color: @veryVeryLightGrey;
+	}
+}
+
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover,
+.nav-pills > .active > a:focus {
+	background-color: @primaryColor;
+	.vertical-gradient(@primaryHighlightColor, @primaryColor);
+}
+
+/*
+ * progressive pill styles
+ */
+
+.progressive.nav-pills {
+
+	/*
+	 * shape
+	 */
+	> li {
+		margin-top: 0;
+		margin-bottom: 10px;
+		cursor: default;
+
+		> a {
+			border-top-left-radius: 0;
+			border-top-right-radius: 20px;
+			border-bottom-right-radius: 20px;
+			border-bottom-left-radius: 0;
+			border: 0;
+			padding: 10px;
+		}
+	}
+
+	/*
+	 * hover colors
+	 */
+	> li:hover > a {
+		color: @primaryHoverColor;
+		background-image: none;
+
+		i {
+			color: @primaryHoverColor;
+		}
+	}
+	> li.active:hover > a {
+		color: white;
+		.vertical-gradient(@primaryHighlightColor, @primaryColor);
+
+		i {
+			color: white;
+		}
+	}
+
+	/* 
+	 * cursor
+	 */
+	cursor: default;
+	li.active {
+	 cursor: default;   
+	}
+}

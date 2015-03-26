@@ -1,0 +1,155 @@
+/*
+ * button colors
+ */
+
+@buttonLabelColor: @secondaryColor;
+@buttonLabelHoverColor: @secondaryColor;
+
+@primaryButtonColor: @primaryColor;
+@primaryButtonHoverColor: @primaryHoverColor;
+
+/*
+ * button sets
+ */
+
+.buttons {
+	display: inline-block;
+	padding-top: 20px;
+
+	button, .btn {
+		margin-bottom: 5px;
+	}
+}
+
+/*
+ * buttons
+ */
+
+.btn {
+	color: @buttonLabelColor;
+	shadow: none;
+}
+
+.btn:hover {
+	color: @buttonLabelHoverColor;
+}
+
+.btn.disabled, .btn[disabled] {
+	color: @primaryButtonColor;
+}
+
+.btn-option {
+	float: right; 
+	margin-left: 20px;
+	margin-bottom: 20px;
+}
+
+/*
+ * small and large buttons
+ */
+
+.btn-small {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;	
+}
+
+.btn-large {
+	padding: 10px 15px;
+	font-size: 16px;
+	border-width: 1px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+
+	i {
+		position: relative;
+		top: -3px;
+		margin-left: -5px;
+		margin-right: 10px;
+	}	
+}
+
+/*
+ * primary buttons
+ */
+
+.btn-primary, .btn-primary[disabled] {
+	background-color: @primaryButtonColor; 
+	.vertical-gradient(@primaryHighlightColor, @primaryColor);
+	color: white !important;
+	text-shadow: none;
+}
+
+.btn-primary:not([disabled]):hover {
+	.vertical-gradient(@primaryHoverColor, @primaryColor); 
+}
+
+/*
+ * HTML buttons
+ */
+
+button {
+	.vertical-gradient(white, @veryLightGrey);
+	border: 2px solid @veryLightGrey;
+	border-radius: 5px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+	min-width: 25px;
+
+	i {
+		color: @darkGrey;
+	}
+}
+
+button:hover {
+	//.vertical-gradient(white, @veryVeryLightGrey);
+
+	i {
+		color: @primaryColor;
+	}
+}
+
+button.close:hover {
+	background: transparent;
+}
+
+/*
+ * button icons
+ */
+
+button .fa {
+	top: 0;
+	color: @darkGrey;
+	margin-top: 3px;
+}
+
+.btn-primary .fa {
+	color: white;
+}
+
+/*
+ * nav bar buttons
+ */
+
+.navbar .btn {
+	border: none;
+}
+
+/*
+ * go buttons
+ */
+
+ .go.btn {
+	color: white;
+	text-shadow: none;
+	background-color: @mediumGreen;
+	background-image: none;
+	border: 1px solid @darkGreen; 
+}
+
+.go.btn:hover {
+	background-color: @darkGreen;
+}

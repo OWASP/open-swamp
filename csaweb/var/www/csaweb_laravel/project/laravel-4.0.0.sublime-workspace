@@ -1,0 +1,343 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"swam",
+				"swampLogin"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/amegahed/Sites/laravel-4.0.0/app/routes.php",
+		"/Users/amegahed/Sites/laravel-4.0.0/app/filters.php",
+		"/Users/amegahed/Sites/laravel-4.0.0/bootstrap/paths.php",
+		"/Users/amegahed/Sites/laravel-4.0.0/bootstrap/start.php",
+		"/Users/amegahed/Sites/laravel-4.0.0/app/start/global.php",
+		"/Users/amegahed/Sites/laravel-4.0.0/app/start/artisan.php",
+		"/Users/amegahed/Sites/laravel-4.0.0/app/controllers/BaseController.php",
+		"/Users/amegahed/Sites/laravel-4.0.0/app/database/seeds/DatabaseSeeder.php",
+		"/Users/amegahed/Sites/laravel-4.0.0/app/models/User.php",
+		"/Users/amegahed/Documents/Laravel/Laravel 4.0.0/vendor/laravel/framework/src/Illuminate/Foundation/Application.php",
+		"/Users/amegahed/Documents/Laravel/Laravel 4.0.0/vendor/predis/predis/README.md",
+		"/Users/amegahed/Documents/Laravel/Laravel 4.0.0/vendor/predis/predis/FAQ.md",
+		"/Users/amegahed/Sites/swamp-backend/application/routes.php",
+		"/Users/amegahed/Sites/swamp-backend/application/controllers/users.php",
+		"/Users/amegahed/Sites/swamp-backend/application/config/database.php",
+		"/Users/amegahed/Sites/swamp-backend/application/config/auth.php",
+		"/Users/amegahed/Sites/swamp-backend/application/config/session.php",
+		"/Users/amegahed/Sites/swamp-backend/project/untitled",
+		"/Users/amegahed/Sites/laravel-test/application/views/authors/edit.blade.php",
+		"/Users/amegahed/Sites/laravel-test/application/views/authors/index.blade.php",
+		"/Users/amegahed/Sites/laravel/application/views/authors/index.blade.php",
+		"/Users/amegahed/Sites/laravel/application/views/authors/new.blade.php",
+		"/Users/amegahed/Sites/laravel/application/routes.php",
+		"/Users/amegahed/Sites/laravel/application/controllers/authors.php",
+		"/Users/amegahed/Sites/laravel/application/views/authors/edit.blade.php",
+		"/Users/amegahed/Sites/laravel/sublime/laravel.sublime-project",
+		"/Users/amegahed/Sites/laravel/sublime/laravel.sublime-workspace",
+		"/Users/amegahed/Desktop/untitled",
+		"/Users/amegahed/Sites/laravel/application/views/authors/view.blade.php",
+		"/Users/amegahed/Sites/laravel/application/models/author.php",
+		"/Users/amegahed/Sites/laravel/application/views/common/author_errors.blade.php",
+		"/Users/amegahed/Sites/laravel/application/views/layouts/default.blade.php",
+		"/Users/amegahed/Sites/laravel/application/migrations/2013_05_20_193103_add_authors.php",
+		"/Users/amegahed/Sites/laravel/application/views/home/index.blade.php",
+		"/Users/amegahed/Sites/laravel/application/views/authors/index.php",
+		"/Users/amegahed/Sites/laravel/application/controllers/base.php",
+		"/Users/amegahed/Sites/laravel/application/migrations/2013_05_20_192233_create_authors_table.php",
+		"/Users/amegahed/Sites/laravel/application/config/database.php",
+		"/Users/amegahed/Sites/laravel/application/config/application.php",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/members/invite-members/invitations-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/projects/members/invite-members/invitations.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/members/invite-members/invite-members-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/styles/tables.less",
+		"/Users/amegahed/Sites/swamp-prototype3/styles/forms.less",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/members/project-members-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/members/invite-members/invitations/invitation-view.js",
+		"/Users/amegahed/Desktop/invitations-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/router.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/members/invite-members/invitations-sent-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/activities/activity-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/home-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/activities/activities-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/styles/styles.less",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/invitations/invitation-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/activities/activity.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/application.js",
+		"/Users/amegahed/Sites/swamp-prototype3/index.html",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/registry.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/models/session.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/header-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/project-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/registration/project-registration-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/details/project-profile-updated-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/projects/details/project-profile-updated.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/projects/details/edit-project-details.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/projects/members/invitations/invitations-sent.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/projects/details/delete-project.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/details/delete-project-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/projects/details/project-deleted.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/details/project-deleted-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/members/project-membership-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/members/project-membership-updated-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/members/invitations/invite-members-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/members/invitations/invitations-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/members/invitations/invitations-sent-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/projects/members/project-membership.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/projects/members/invitations/invite-members.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/home.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/main.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/utilities/date-format.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/models/activity.js",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/projects/details/project-profile/project-profile-form.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/projects/details/project-details.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/projects/details/project-profile/project-profile.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/details/edit-project-details-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/details/project-profile/project-profile-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/details/project-details-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/projects/details/project-profile/project-profile-form-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/projects/project.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/my-account/user-profile/new-user-profile-form.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/my-account/user-profile/new-user-profile-form-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/my-account/user-profile/user-profile-form-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/my-account/user-profile/user-profile-form.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/my-account/edit-user-profile-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/registration/user-registration-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/registration/user-registration.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/library/jquery/plugins/jquery.validate.js",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/welcome.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/about.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/registration/email-verification.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/registration/aup.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/projects/registration/project-registration.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/my-account/edit-user-profile.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/welcome-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/models/user.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/my-account/user-profile/user-profile-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/contact.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/footer.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/header.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/templates/message-sent.tpl",
+		"/Users/amegahed/Sites/swamp-prototype3/styles/bootstrap/navbar.less",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/contact-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/about-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/styles/navs.less",
+		"/Users/amegahed/Sites/swamp-prototype3/styles/front-page.less",
+		"/Users/amegahed/Sites/swamp-prototype3/styles/colors.less",
+		"/Users/amegahed/Sites/swamp-prototype3/styles/bootstrap/forms.less",
+		"/Users/amegahed/Desktop/Swamp Network Info",
+		"/Users/amegahed/Sites/swamp-prototype3/styles/front-page-photo.less",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/registration/aup-view.js",
+		"/Users/amegahed/Desktop/Validation Test/index.html",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/registration/email-verification-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/my-account/user-password-changed-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/my-account/change-user-password-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/utilities/cookies.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/my-account/user-profile-deleted-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/my-account/user-profile-updated-view.js",
+		"/Users/amegahed/Sites/swamp-prototype3/scripts/views/my-account/my-account-view.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"",
+			"/Users/amegahed/Sites/swamp-prototype3/styles",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"Jake",
+			"invitations/invitation-view",
+			"/invitations-sent",
+			"projectId",
+			"password",
+			"Please enter a valid email address.",
+			"container",
+			"jquery.validate",
+			"validation",
+			"margin-right",
+			"margin-left",
+			"banner.jpg",
+			"nav",
+			";\n",
+			"border: @mediumBlue",
+			"border",
+			"999999",
+			"lightBlue",
+			"darkBlue",
+			"inputBackground",
+			"input {",
+			"lightBlue",
+			"mediumB",
+			"veryLightBlue",
+			"Green",
+			"green",
+			"Green",
+			".ajax",
+			"login",
+			"url",
+			"9292",
+			"window.application",
+			"UserRegistrationView",
+			"application.user",
+			"ChangeUserPasswordView",
+			"window.application",
+			"window.application.router",
+			"9292",
+			"localhost:9292",
+			"getResponseAttribute",
+			"window.application.user",
+			"readCookie",
+			"cursor",
+			"active",
+			"json",
+			"swampUuid",
+			"navbarText",
+			"welcome",
+			"40px",
+			"navbar-form",
+			"navbar-search",
+			"Swamp",
+			"buttons span12",
+			"my-projects",
+			"very",
+			"router.",
+			"brown",
+			"header",
+			"router",
+			"profile has",
+			"successfully",
+			"2012 SWAMP",
+			"2012",
+			"border-radius",
+			"label",
+			"background-color",
+			"background-color\n.nav-tabs > .active > a:hover,\n.nav-tabs > .active > a:focus {\n  color: @gray;\n  background-color: @bodyBackground;\n  border: 1px solid #ddd;\n  border-bottom-color: transparent;\n  cursor: default;\n}",
+			".nav-tabs > .active > a,\n.nav-tabs > .active > a:hover,\n.nav-tabs > .active > a:focus {\n  color: @gray;\n  background-color: @bodyBackground;\n  border: 1px solid #ddd;\n  border-bottom-color: transparent;\n  cursor: default;\n}",
+			"background-color",
+			"color",
+			"light-green",
+			">\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"mediumBlue",
+			"Blue",
+			"2013 SWAMP",
+			"medium-green"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 283.0,
+	"status_bar_visible": true
+}
